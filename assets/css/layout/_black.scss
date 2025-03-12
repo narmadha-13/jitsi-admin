@@ -1,0 +1,491 @@
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+}
+
+.window {
+  background-color: $black_background;
+}
+
+.navigation {
+  background-color: $black_font-color;
+
+  i {
+    color: $black_background !important;
+
+  }
+
+  a {
+    color: $black_background;
+
+    &:hover, &:active {
+      color: lighten($black_background, 10%);
+    }
+  }
+}
+
+.card {
+  background-color: $black_navbar;
+  border: solid $black_font-color 1px;
+}
+
+p {
+  color: $black_font-color;
+}
+
+.text-black-50, .h5-responsive {
+  color: $black_font-color !important;
+}
+
+.h4-responsive {
+  color: white;
+}
+
+.navigation {
+  background-color: $black_font-color !important;
+
+  .custom-control {
+    .brightmode {
+      color: black;
+    }
+
+    label {
+      color: black;
+    }
+  }
+
+  a {
+    color: $black_background;
+  }
+}
+
+.nav-mat-tabs .nav-mat-item {
+  color: white;
+}
+
+.dropdown-menu {
+  background-color: $black_navbar;
+  border: 1px solid $black_font-color;
+
+
+  .dropdown-item {
+    color: $black_font-color;
+
+    &[data-toggle="collapse"]:focus {
+      color: white;
+      text-decoration: none;
+      background-color: inherit;
+    }
+
+    &:hover {
+      color: $black_background;
+    }
+  }
+}
+
+
+.popover {
+  background-color: $black_navbar;
+  border: solid 1px $black_font-color;
+}
+
+.popover-header {
+  color: white;
+  background-color: $black_background;
+}
+
+.popover-body {
+  color: $black_font-color;
+}
+
+.modal-body, .modal-content {
+  background-color: $black_modal;
+  color: $black_font-color;
+}
+
+label {
+  color: $black_font-color;
+}
+
+.form-control, .form-control:read-only {
+  background-color: $black_navbar;
+  color: $black_font-color;
+}
+
+.form-control:focus {
+  background-color: $black_background_active;
+  color: $black_font-color;
+}
+
+
+.modal-header {
+  background-color: $black_modal_header !important;
+  color: $black_font-color;
+}
+
+.modal-footer {
+  //background-color: $black_background;
+  color: $black_font-color;
+}
+
+h5 {
+  color: $black_font-color;
+}
+
+.list-group-item {
+  background-color: $black_navbar;
+  border-color: $black_font-color;
+}
+
+a {
+  color: $black_font-color;
+
+  &:hover {
+    color: darken($black_font-color, 10%);
+    text-decoration: none;
+  }
+
+  &:active {
+    color: darken($black_font-color, 10%);
+    text-decoration: none;
+  }
+}
+
+
+.dashboardBtn:hover {
+  text-decoration: none;
+
+}
+
+#modalAdressbook a[aria-expanded="true"] {
+  background: $black_navbar;
+}
+
+.jconfirm-box {
+  background-color: $black_modal !important;
+  color: $black_font-color !important;
+
+  .jconfirm-title-c {
+    color: $black_font-color !important;
+  }
+
+  .jconfirm-content {
+    color: $black_font-color !important;
+  }
+}
+
+.close {
+  color: white;
+
+  &:hover {
+    color: white;
+  }
+}
+
+
+.brightmode {
+  color: $black_font-color;
+}
+
+.jconfirm-box {
+  background-color: $black_modal !important;
+  color: $black_font-color !important;
+
+  .jconfirm-title-c {
+    color: $black_font-color !important;
+  }
+
+  .jconfirm-content {
+    color: $black_font-color !important;
+  }
+}
+
+
+.mdtimepicker .mdtp__clock_holder, .dudp__cal-container {
+  background-color: $black_background !important;
+}
+
+.mdtimepicker .mdtp__clock_holder .mdtp__clock {
+  background-color: $black_modal;
+}
+
+.mdtp__digit span {
+  color: white;
+}
+
+.dudp__calendar {
+  .dudp__date {
+    color: white !important;
+  }
+
+  .disabled {
+    color: grey !important;
+  }
+
+  .dudp__nm {
+    color: lightgray !important;
+  }
+
+  .dudp__cal-month-year, .dudp__btn-cal-next, .dudp__btn-cal-prev {
+    color: lightgray;
+  }
+}
+
+.dudp__btn-cal-next, .dudp__btn-cal-prev {
+  color: lightgray;
+}
+
+.dudp__weekdays span {
+  color: lightgray !important;
+}
+
+.dudp__years-view {
+  background-color: $black_modal !important;
+}
+
+.dudp__month, .dudp__year {
+  color: lightgray;
+
+}
+
+.dudp__month.selected, .dudp__year.selected {
+  color: white !important;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+
+
+::-webkit-scrollbar-track {
+  background: rgba(102, 102, 102, 0);
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.footer, .joinFooter {
+  background-color: $black_navbar;
+
+  .nav-link {
+    color: $black_font-color !important;
+  }
+}
+
+
+.btn[class*="btn-outline-"] {
+  border-color: white !important;
+  color: white !important;
+}
+
+
+#col-waitinglist {
+  .card {
+    background-color: $black_modal !important;
+  }
+}
+
+.scrollEle {
+  color: white;
+}
+
+.participantsName {
+  color: $black_font-color;
+}
+
+
+hr {
+  border-top: 1px solid rgb(211, 211, 211);
+}
+
+.list-group-item {
+  color: $black_font-color;
+}
+
+
+.form-outline {
+  .form-control {
+    &:focus {
+      & ~ .form-label {
+        color: $black_font-color !important;
+      }
+
+      & ~ .form-notch {
+        .form-notch-leading {
+          border-color: $black_font-color !important;
+          box-shadow: -1px 0 0 0 $black_font-color, 0 1px 0 0 $black_font-color, 0 -1px 0 0 $black_font-color !important;
+        }
+
+
+        .form-notch-middle {
+          border-color: $black_font-color !important;
+          box-shadow: 0 1px 0 0 $black_font-color !important;
+          border-top: 1px solid transparent !important;
+        }
+
+        .form-notch-trailing {
+          border-color: $black_font-color !important;
+          box-shadow: 1px 0 0 0 $black_font-color, 0 -1px 0 0 $black_font-color, 0 1px 0 0 $black_font-color !important;
+        }
+      }
+    }
+
+    & ~ .form-label {
+      color: $black_font-color;
+    }
+  }
+
+  input[type=text] {
+    &.form-control {
+      background-color: $black_background;
+    }
+  }
+}
+
+@supports (-webkit-appearance:none) {
+  .frozenGlas {
+    background-color: transparent !important;
+    backdrop-filter: blur(5px);
+  }
+}
+
+.reportTimeLine_room {
+  .showOnHover {
+    background-color: $black_background;
+  }
+}
+
+.calloutsymbol {
+  .content {
+    background-color: $black_background;
+    border: 1px $black_font-color solid;
+  }
+
+  .ringingsymbol {
+    background-color: $black_background;
+    border: 1px $black_font-color solid;
+  }
+}
+
+#sliderTop {
+  #col-waitinglist {
+    &.large {
+      background-color: $black_background;
+    }
+  }
+
+  .dragger {
+    background-color: $black_background;
+    color: $black_font-color;
+  }
+}
+
+.joinPageHeader {
+  color: $black_font-color;
+}
+
+
+
+.jitsiadminiframe {
+  &.minified {
+    outline: solid 1px $black_font-color !important;
+  }
+
+  &:not(.maximized) {
+    outline: solid 1px $black_font-color
+  }
+}
+
+  .fullscreen {
+    background-color: $black_background;
+  }
+
+  .bg-color {
+    background-color: $black_background;
+  }
+
+  .profile {
+    color: $black_font-color;
+  }
+
+
+
+  .input-group {
+    .btn-outline-primary {
+      border-color: $main-color !important;
+    }
+  }
+
+  .proTips-wrapper {
+    .proTips {
+      background-color: $black_navbar;
+      color: $black_font-color;
+      border-color: $main-color;
+
+      img {
+        -webkit-filter: invert(1);
+        filter: invert(1);
+      }
+    }
+  }
+
+
+  .conference-sidebar {
+    .wrapperIcons {
+      .wrapper-helper {
+        background-color: $black_background;
+        color: $black_font-color;
+      }
+    }
+  }
+
+.sidebar{
+  &.showSidebar{
+    background-color: $black_background;
+  }
+}
+
+.bg-online {
+  background-color: scale-color($online, $lightness: -90%);
+  color: $black_font-color!important;
+
+}
+
+.bg-away {
+  background-color: scale-color($away, $lightness: -90%);
+  color: $black_font-color!important;
+}
+
+.card {
+  &.awayBorder{
+    background-color: scale-color($away, $lightness: -90%);
+    border-width: 2px!important;
+  }
+  &.olineBorder{
+    background-color: scale-color($online, $lightness: -90%);
+    border-width: 2px!important;
+  }
+}
+
+
+.card {
+  &.favorites {
+    .card-background {
+      background-color: $cardBackground_dark!important;
+    }
+  }
+}
+
+.swal2-modal{
+  background-color: $black_background!important;;
+}

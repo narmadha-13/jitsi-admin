@@ -1,0 +1,683 @@
+{% extends 'join/base.html.twig' %}
+
+{% block header %}{{ 'Changelog'|trans }}{% endblock %}
+
+{% block content %}
+
+<div class="row markdown">
+    {{ include('changelog/__entry.html.twig',
+        {'version':'0.79.4',
+            'bugfix':'
+- Moving to a Breakout room leads to the star page
+'}) }}
+    {{ include('changelog/__entry.html.twig',
+        {'version':'0.79.3',
+            'bugfix':'
+- Make fullscreen multiframe more robust
+'}) }}
+    {{ include('changelog/__entry.html.twig',
+        {'version':'0.79.2',
+            'bugfix':'
+- Fix logo issue was to large
+'}) }}
+    {{ include('changelog/__entry.html.twig',
+        {'version':'0.79.1',
+            'bugfix':'
+- Fix https Routes after login
+'}) }}
+
+    {{ include('changelog/__entry.html.twig',
+        {'version':'0.79.0',
+            'whatsNew':'
+- **Toggle Filmstripe**: A new button has been introduced in the conference interface, allowing users to toggle the Filmstripe view on or off easily.
+- **Prefix Room Name**: Rooms now support a server hash prefix feature, enabling the loading of different Jitsi configurations during runtime.
+- **Transfer Room**: Add the possibility to transfer a room to an other moderator.
+',
+            'improvement':"
+- **Autoupload to Dockerhub**: Jitsi admin now includes an automatic upload functionality to Docker Hub, streamlining the deployment process.
+- **Addressbook in Dark Mode**: The Addressbook feature now comes with a transparent background when in dark mode, enhancing visibility and aesthetics.
+- **Addressbook Filter Enhancement**: The address book's filtering mechanism has been improved to search the entire row, enhancing its usability beyond checkbox-only search.
+- **Upgrade MDBootstrap**: Updated the MDBootstrap library to its latest version for improved performance and compatibility.
+- **Enhanced Fullscreen Mode**: Made the Fullscreen mode in multiframe mode more robust, ensuring a smoother and more reliable experience.
+- **Improved Multiframe Closing**: Users can now close a multiframe even if its internal content has not loaded, improving the overall user experience.
+",
+            'bugfix':'
+- A lot of Bugfixes
+'
+        }) }}
+    {{ include('changelog/__entry.html.twig',
+        {'version':'0.78.10',
+            'bugfix':'
+- Translations from Crowdin.
+'}) }}
+    {{ include('changelog/__entry.html.twig',
+        {'version':'0.78.9',
+            'bugfix':'
+- Make Version because of failure in the pipeline
+'}) }}
+    {{ include('changelog/__entry.html.twig',
+        {'version':'0.78.8',
+            'improvement':'
+- Aupload Release to docker hub
+'}) }}
+    {{ include('changelog/__entry.html.twig',
+        {'version':'0.78.7',
+            'bugfix':'
+- Add Trusted Proxies to the default environment.
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.78.6',
+                'bugfix':'
+- Remove the server id bevor the room name.
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.78.5',
+                'bugfix':'
+- Add the server id bevor the room name. use md5 hashed id and server slug
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.78.4',
+                'bugfix':'
+- Add the server id bevor the room name. use md5 hashed server slug
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.78.3',
+                'bugfix':'
+- Add the server id bevor the room name. use md5 hashed server id
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.78.2',
+                'bugfix':'
+- Toggle Filmstripe only when is set in the server settings
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.78.1',
+                'bugfix':'
+- MouseEnter on conference window to work on mobile devices
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.78.0',
+                'whatsNew':'
+- **Dynamic Tag Visibility**: Tags in meetings now appear only when the mouse is active, enhancing a cleaner interface during discussions.
+- **Unified Button Appearance**: Conference buttons now match the overall button color scheme and intelligently hide when the mouse is inactive.
+- **Direct Dial-in for Open Conferences**: Open rooms now offer direct dial-in information within the conference for added convenience.
+- **Filmstrip Toggle**: Users can now remove the filmstrip during a conference via server settings customization.
+- **Whiteboard/Etherpad Removal**: Whiteboard removal feature added for all conferences on a virtual server, enhancing customization options.
+- **Chat Enablement Control**: Virtual servers can now disable the chat feature through the Jitsi toolbar settings for more tailored experiences.
+',
+                'improvement':'
+- **Enhanced Docker Startup Script**: Docker startup script is now integrated into the Dockerfile for better efficiency.
+- **Card Design Enhancement**: Cards now sport a lighter color for a more cohesive Material 3 design experience.
+- **Material3 Ready Box Shadow**: Box shadow design now aligns with Material 3 standards for a more consistent visual aesthetic.
+- **Improved Multiframe Closure**: Enhancements made for more robust and stable multiframe closures.
+- **Enhanced Lobby Invitation Functionality**: Search results can now be navigated and selected using arrow keys and Enter for added user convenience.
+- **Upgrade to TWIG3**: Platform updated to TWIG3 for improved performance and features.
+- **Manifest Rotation**: Enabling rotation in the Jitsi-admin app for a better user experience.
+',
+                'bugfix':'
+- A lot of Bugfixes
+'
+            }) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.77.6',
+                'bugfix':'
+- Remove newline and whitespace after email
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.77.5',
+                'bugfix':'
+- Indexer remove all special characters in special fields
+- Search user by mobile phonenumber is not more robust
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.77.4',
+                'bugfix':'
+- Fix iCal Database Bridge Bug
+- Fix IP-check to check all ips in the coma seperated list
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.77.3',
+                'bugfix':'
+- Sending the protocoll button is now also available on series
+- fix special character in the SMTP password when using installDocker.sh file
+'}) }}
+{{ include('changelog/__entry.html.twig',
+            {'version':'0.77.2',
+                'bugfix':'
+- Phone popover is now staying open until the user clicks the phone icon again
+- the lobby waiting room is closing now faster
+'}) }}
+
+{{ include('changelog/__entry.html.twig',
+            {'version':'0.77.1',
+                'bugfix':'
+- Sending the protocoll button is now also available on series
+- fix special character in the SMTP password when using installDocker.sh file
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.77.0',
+                'whatsNew':'
+- **Default End-to-End Encryption (E2E):** Enhance your security and privacy with the ability to enable End-to-End Encryption by default. Each server can now configure this feature individually, giving you control over the level of encryption applied to your communications.
+- **Transparent Background for Videoconference Tags:** Responding to your feedback, we\'ve introduced a feature that allows you to set tags in videoconferences with a transparent background. This creates a more immersive videoconference experience by maximizing the display area, making your meetings more engaging and effective.
+    - Set `LAF_SHOW_TAG_TRANSPARENT_BACKGROUND=1` to display tags in the conference with a transparent background.
+- **UI Improvement:** The application now adopts a Flat-UI and Material Design 3 approach with a green background indicating an ongoing meeting, enhancing user experience.
+- **Quick Actions:** Added quick actions to swiftly change the camera settings.
+- **Conference Mapper:** The conference mapper now selects the user and adds the username instead of the caller ID into the JWT sent to the prosody.
+- **Limit Participants in a Conference:** Added the ability to set a maximum number of participants in a conference, imposing a hard limit for better management.
+- **IP Restriction:** Admins can now set IP and IP range restrictions for accessing conferences on a Jitsi admin server.
+- **Pro Features:** Opened up Pro features for all users, expanding access and functionality.
+- **Multiframe Border Color:** Multiframe border color now matches the tag background color for a cohesive visual experience.
+- **Add Chrome Plugin API:** Introduced the initial API for the new Chrome browser plugin, enhancing plugin integration.
+- **Send Protocol:** Send the conference protocol from the options menu to all participants, improving communication and documentation.
+- **Jitsi-Event-Sync Relais Function:** Introduced a Jitsi-Event-Sync relay function for internal purposes, aiding conference mapper requests to another Jitsi admin, saving Jitsi event sync stats.
+- **Adding Category for Each Server:** Categories for a meeting can now be bound to a specific server, streamlining category selection based on the chosen server.
+- **Enterprise functionality for all:** We open the enterprise functionality to all users. So in the server menu you will see a new enterprise feature button. Feel free to play with it
+    - Set a SMTP-server for each jitsi server
+    - Set the background-color and background image for every server join page
+    - Enable jitsi-admin API
+    - Add data privacy url for each server
+    - Set jigasi settings for each jitsi server and use the jitsi admin conference mapper
+',
+
+                'improvement':'
+- Updated mdbootstrap to the latest version for enhanced performance and compatibility.
+- Added WebSocket in Docker behind the `/ws` route instead of a subdomain, improving routing efficiency.
+- Migrated all routing paramconverters into new paramconverters for a more streamlined and efficient application.
+- Added the option to show "Add New Participants" in the dropdown option menu, simplifying participant management.
+- Implemented the ability to add a category via a command, allowing for settings to be sent directly via the command as parameters.
+',
+
+                'bugfix':'
+- A lot of Bugfixes
+'}) }}
+
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.76.11',
+                'bugfix':'
+- Move themes to other directory and streamline installation of theme into a fixed directory called theme
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.76.10',
+                'bugfix':'
+- Output more informations when starting debian installer
+- Add new routes to keycloak theme v2 which is mandatory in keycloak > 22
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.76.9',
+                'bugfix':'
+- Fix profile picture which was sometimes not round because of a max-with issue
+
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.76.8',
+                'bugfix':'
+- Intruduce new github actions and automatic artifact generation
+
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.76.7',
+                'bugfix':'
+- Add Docker installation for Debian and Ubuntu befor installing Jitsi-admin
+- Dockerfile for wensocket application leads sometimes to permission error. CHange user during npm install to root
+- Error page image was sometime to wide
+- Textarea autosize in sheduling agenda was not working
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.76.6',
+                'bugfix':'
+- Themeing iCal Link can be hidden seperatly.
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.76.5',
+                'bugfix':'
+- Sheduling Modal is now with symbols
+- Sheduling Selectin is now with buttons now with checkboxes
+- Change Sheduling naming "Vielleicht" to "Unter Vorbehalt"
+- Bug when switch to breakout rooms leads to closing multiframe
+- Change "Start in Browser" to "Start"
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.76.4',
+                'bugfix':'
+- Hide Chatwoot when multiframe is open
+- Websocket is now TLS ready
+- Change "Start in Browser" to "Start"
+'}) }}
+        {{ include('changelog/__entry.html.twig',
+            {'version':'0.76.3',
+            'bugfix':'
+- fix deputy was able to see conferences of supervisor in iCal
+- Fix long scheduling list was not scrollable
+'}) }}
+
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.76.2
+                __Bugfix__
+                - Errorpage can be set individual by theming
+            {% endapply %}
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.76.1
+                __Bugfix__
+                - Dashboard leads to a bug when there was no conference created
+                - Empty Server leads to wrong columns in the room create modal
+            {% endapply %}
+        </div>
+
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.76.0
+
+                __What's new__
+                - Requires PHP8.1 and node18
+                - Big UI Improvement
+                - Meetling Pro Tip
+                - Refactor of addressbook
+                - New Logo
+                - Pause conference
+                    - A multiframe can be muted
+                    - Microphone and camera can be switched off for paused users
+                    - Paused users are shown as "away" in the conference
+                    - Paused conferences are displayed with a big pause symbol on an overlay
+                    - Automatic muting
+                    - When two conferences are opened in two multi frames, all conferences in the background are automatically muted
+                - Deputy function
+                    - A deputy can be selected
+                    - Deputies can create conferences on behalf of their superiors
+                    - Deputies can see when their superiors have planned conferences
+                    - These conferences are marked as private, and the name and agenda are not shown to deputies
+                    - Other deputies of the same superior can edit conferences created by other deputies
+                - Scheduling improvements
+                    - Download scheduling results in CSV format
+                    - Hide "maybe" option in scheduling
+                    - Send email when all participants have voted
+                    - Other participants can make a counterproposal
+                - Migration of SSO to Keycloak version 16 or higher
+                - Upgrade to Symfony 6.2
+                - when multiframe is minimized make it clickable to resize
+                - send websocket ready when participant is in lobby
+                - allow sending mails to fixed rooms
+                - add GitHub pipelines
+                - add update instruction
+
+                __Bugfix__
+                - Numerous bugfixes
+                - make pause a conference more robust
+                - Docker maria DB healthcheck fix
+                - remove css animation because of high CPU usage
+                - pause a multiframe leads sometimes to a wrong execute command
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            <h4 class="h4-responsive">0.75.4</h4>
+            {% apply markdown_to_html %}
+                __Bugfix__
+                * Invited emails are sometimes doubled
+                * Run `php bin/console app:system:repair` as server administrator to remove all double emails and connect the correct emails with the invited conferences
+                * Add again two "$$" in the env
+                * Remove commentary in one row and move the commentary to the row above
+                * Move system repair command from Dockerfile into dockerupdate.sh
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            <h4 class="h4-responsive">0.75.3</h4>
+            {% apply markdown_to_html %}
+                __Bugfix__
+                * Invited emails are sometimes doubled
+                * Run `php bin/console app:system:repair` as server administrator to remove all double emails and connect the correct emails with the invited conferences
+                * Add only one "$" in the env
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            <h4 class="h4-responsive">0.75.2</h4>
+            {% apply markdown_to_html %}
+                __Bugfix__
+                * Invited emails are sometimes doubled
+                   * Run `php bin/console app:system:repair` as server administrator to remove all double emails and connect the correct emails with the invited conferences
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            <h4 class="h4-responsive">0.75.1</h4>
+            {% apply markdown_to_html %}
+                __Bugfix__
+                * Invited emails are sometime wrong because there is a newline after an email address save which is not allowed to be there
+                   * Run `php bin/console app:system:repair` as server administrator to auto repair all emails with a trailing new line
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            <h4 class="h4-responsive">0.75.0</h4>
+            {% apply markdown_to_html %}
+                __What`s new__
+                * New Websocket not SSE
+                * https://github.com/H2-invent/jitsi-admin/wiki/Websocket-installation
+                * Online status
+                * See online status of users in you contact list
+                * Send messages to wating users in the lobby
+                * Multiframe (One Pager)
+                * Open the videoconference in the same tab
+                * Open several conference in one tab if needed
+                * Include any othe webapplications in you jitsiadmin and open the application on all participants screens (whiteboard, etherpad, nextcloud ....)
+                * Generate reporting from your conference and sent it to the participants
+                * Include your Etherpad notes and your Whiteboard in the reporting.
+                * Japanese and russian localization(We are looking for help: https://crowdin.com/project/jitsi-admin)
+                * Add new participants from the lobby panel
+                * Public conferences (Disabled by default)
+                * Allow any user to create a conference as they are used to it with normal jitsi . Just type in a name of the conference and go.
+                * New changelog page. It is this page :)
+                * New changelog page. It is this page :)
+
+                __Bugfix__
+                * See below
+
+            {% endapply %}
+            <hr>
+        </div>
+
+
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC19
+
+                __What's new__
+                * New changelog page. -This page-
+
+                __Bugfix__
+                * Sometimes a too fast click on accept in the lobby can lead to a timeout and when the waiting user is not fully loaded, then the websocket is not active and no message is recieved
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC18
+
+                __What's new__
+                * merge languages
+
+                __Bugfix__
+                * Server to choose was wrong when only one server
+                * Wrong timezone leads to an error if timezone is +UTC
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC17
+
+                __What's new__
+                * Change all Buttons on the join page
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC16
+
+                __What's new__
+                * Start with a bis UI redesign which is in progress until 0.76.x
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC15
+
+                __What's new__
+                * remove all rounded buttons
+                * notification to not forward the email to other persons because the link is personalised
+                * some improvements in help texts
+
+                __Bugfix__
+                * Server to choose was wrong when only one server
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC14
+
+                __Bugfix__
+                * remove all overlays when a conference is dragged and released
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC13
+
+                __Bugfix__
+                * rate conference --> improve timeout to 2sec
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC12
+
+                __Bugfix__
+                * Improve multiframe moving with better overlay
+                * install script contains now the new websocket
+                * robust terms and conditions when first enter the application
+                * multiframe can now be switched off by default on an instance
+                * add displayname to call in response when user is accepted in a conference
+
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC11
+
+                __What's new__
+                * Add Terms and Conditions of jitsi-Admin to the first login
+                * Can be disabled by the jitsi-admin theme
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC10
+
+                __Bugfix__
+                * conference report SVG improvement. svg of the whitboard was sometimes not in the right size
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC09
+
+                __What's new__
+                * improve drag and drop of the multiframe
+                * room status can lead to an error when destroyed at was empty
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC08
+
+                __Bugfix__
+                * woochat bubble is above the conference multiframe
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC05
+
+                __What's new__
+                * maximize multiframe when double click
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC05
+
+                __Bugfix__
+                * woochat bubble is above the conference multiframe
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC04
+
+                __Bugfix__
+                * Set default whiteboard and etherpad
+                * refactor multiframe window
+                * Close Fullscreen when etherpad or whiteboard is opened
+                * refactor hangup function in jitsi-admin lobby iframe window
+                * new conference download header
+                * add update instruction
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC03
+
+                __Bugfix__
+                * Readd startpage
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0-RC02
+
+                __Bugfix__
+                * Fix Edit Profile and Passwort ehen used with an external IDP
+                * Some UI improvement
+                * Show Message when hit save in a schedule
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.75.0
+
+                __What's new__
+                * New Websocket not SSE
+                * https://github.com/H2-invent/jitsi-admin/wiki/Websocket-installation
+                * Online status
+                * See online status of users in you contact list
+                * Send messages to wating users in the lobby
+                * Multiframe (One Pager)
+                * Open the videoconference in the same tab
+                * Open several conference in one tab if needed
+                * Include any othe webapplications in you jitsiadmin and open the application on all participants screens (whiteboard, etherpad, nextcloud ....)
+                * Generate reporting from your conference and sent it to the participants
+                * Include your Etherpad notes and your Whiteboard in the reporting.
+                * Japanese and russian localization(We are looking for help: https://crowdin.com/project/jitsi-admin)
+                * Add new participants from the lobby panel
+                * Public conferences (Disabled by default)
+                * Allow any user to create a conference as they are used to it with normal jitsi . Just type in a name of the conference and go.
+
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.74.6
+
+                __Bugfix__
+                * Docker installation leads to a invalid redirect uri when in prod mode. Thanks to @yoitcj for reporting this issue
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.74.5
+
+                __Bugfix__
+                * Docker installation: mercure hub was not starting because of wrong version. Mercure hub will be dropped in version 0.75.0. Thanks to @kiroubel-girma for reporting the issue
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.74.4
+
+                __Bugfix__
+                * Errormessage when creating an conference when having a timezone UTC- x hours and creating a conference between local time and utc Thanks @kiroubel-girma  for reporting this bug
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.74.3
+
+                __Bugfix__
+                * Allow Screenshare to specific perticipants was not shown when only one server is available to repeating conference and conference scheduling
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.74.2
+
+                __Bugfix__
+                * Allow Screenshare to specific perticipants was not shown when only one server is available Thanks to @supczinskib  For reporting the issue
+            {% endapply %}
+            <hr>
+        </div>
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.74.1
+
+                __Bugfix__
+                * The camera was not working on some devices
+                * Readd Startpage and make it default
+            {% endapply %}
+            <hr>
+        </div>
+
+        <div class="col-12">
+            {% apply markdown_to_html %}
+                #### 0.74.0
+
+                __What's new__
+                * __PHP >=8.0 is required__
+                * Swipe Participants in the Lobby to accept (Mobile only)
+                * Close Conference for all in the Lobby is now triggered when pressing the hang up button
+                * Healtcheck in the lobby. If the Lobby session got lost do a reload
+                * Enable Timezone switch by default
+                * Add Conference Rating. So users can Rate their conference experience
+                * Dont show Server in the conference card, if there is only one server to choose for the user.
+                * Possibility to show participants to invited participants. So everyone can get a overview who is in the conference.
+                * When edit a room, a notification to all participants is only send when : Name, Agenda, time, or duration is changed. All other settings (e.g. switch lobby on/off) can be set without inform the participants
+                * Set static background image on the join page
+                * Cutom mailer can now be send asynchrouns
+                * __Jigasi__ integration. Jitsi-Admin can now send the phone number and idal in number via email
+                * Own Jigasi Conference Mapper. So no external Jigasi-Conference mapper is needed, bcause jitsi-admin knows much better who and when someone is alloed to enter.
+                * New Crowdin updates by @holema in https://github.com/H2-invent/jitsi-admin/pull/337
+            {% endapply %}
+            <hr>
+        </div>
+
+    </div>
+{% endblock %}

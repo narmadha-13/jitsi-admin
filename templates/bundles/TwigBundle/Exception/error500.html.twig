@@ -1,0 +1,11 @@
+
+{% set theme =  getThemeProperties() %}
+{% set header = 'error.internalError'|trans %}
+    {% if theme and getApplicationProperties('500_ERROR_MESSAGE') %}
+        {%  set content= getApplicationProperties('500_ERROR_MESSAGE')  %}
+    {% else %}
+        {%  set content= 'Ohoh - was ist denn hier los? Da ist dem Meetling wohl was kaputt gegangen. Aber keine Sorge er kümmert sich schon drum das zu reparieren.'|trans %}
+    {% endif %}
+   {% set rand = (random(2)+1)|number_format %}
+{% set image =  asset('images/error/error_'~ rand~'.svg') %}
+{% include('bundles/TwigBundle/Exception/error_content.html.twig') %}

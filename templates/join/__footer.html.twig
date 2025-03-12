@@ -1,0 +1,68 @@
+<div class="joinFooter removeInIframe">
+    <div class="row ">
+        <div class="col-lg-4 footerContent">
+        </div>
+        <div class="col-lg-4 footerContent d-flex flex-column">
+            {% if theme == false %}
+                    <a href="https://jitsi-admin.de" target="_blank"><img
+                                src="{{ asset('logo.png') }}"></a>
+            {% else %}
+                <img src="{{ theme.logo }}">
+            {% endif %}
+
+
+            <p class="small text-center">
+                {% if theme is not defined or theme == false %}
+                    <a href="https://jitsi-admin.de" target="_blank">Powered by
+                        Jitsi
+                        Admin</a><br>
+                {% endif %}
+                {% if theme != false %}
+                    {% if theme.footerGdprEnable == true %}
+                        <a class="nav-link" target="_blank"
+                           referrerpolicy="no-referrer"
+                           href="{{ dataPrivacy }}">{{ theme.footerGdprText }}</a>
+                    {% endif %}
+                {% else %}
+                    <a href="{{ dataPrivacy }}" target="_blank"
+                    >{{ 'Datenschutzhinweis'|trans }}</a><br>
+                {% endif %}
+
+
+            </p>
+        </div>
+        {% if theme is not defined or theme == false %}
+            <div class="col-lg-4 footerContent flex-column">
+                <div>
+                    <a href="https://github.com/H2-invent/jitsi-admin/blob/master/LICENSE"
+                       target="_blank"
+                       referrerpolicy="no-referrer" rel="noopener">
+                        <img src="{{ asset('images/agpl.png') }}"></a>
+                    <a href="https://opensource.org/" referrerpolicy="no-referrer"
+                       rel="noopener">
+                        <img src="{{ asset('images/open-source-logo.png') }}"></a>
+                </div>
+                {% if server is defined and  server is not null and server.showStaticBackgroundColor and server.staticBackgroundColor is not null %}
+
+                {% elseif image is not null %}
+
+
+                    <div style="font-size: 12px" class="mt-2">
+                        <a href="{{ image['photographer_url'] }}" target="_blank"
+                           referrerpolicy="no-referrer"
+                           rel="noreferrer noopener">
+                            Image by {{ image['photographer'] }} </a>
+                        <a href="https://www.pexels.com" target="_blank"
+                           referrerpolicy="no-referrer"
+                           rel="noreferrer noopener"> provided by <img style="height: 16px"
+                                                                       src="{{ asset('images/pexels.png') }}"/>
+                        </a>
+                    </div>
+
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+

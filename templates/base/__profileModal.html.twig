@@ -1,0 +1,171 @@
+<div class="modal fade right " id="sideModalTR" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-full-height modal-right" role="document">
+
+        <div class="modal-content  bg-color ">
+            <div class="modal-header">
+                <h4 class="modal-title w-100" id="myModalLabel">{{ 'Profileinstellungen'|trans }}</h4>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+
+
+                                    <div class="picture me-2 "
+                                         style="min-width: 4em; max-width: 4em; height: 4em; border-radius: 5000px; overflow: hidden">
+
+
+                                        {% if app.user.profilePicture %}
+
+                                            <img src="{{ vich_uploader_asset(app.user.profilePicture,'documentFile') }}"
+                                                 class="pic-content w-100 h-100" style="object-fit: cover">
+
+                                        {% else %}
+                                            <div class="d-flex justify-content-center align-items-center w-100 h-100 pic-content"
+                                                 style="background-color: #{{ app.user.username|colorFromString }}; color: white; font-size: 2em">
+                                                {{ app.user|nameOfUserNoSymbol[:2]|upper }}
+                                            </div>
+
+
+                                        {% endif %}
+
+                                    </div>
+                                    <div class="d-flex flex-column">
+
+
+                                        <p class="mb-0">{% if theme != false %}{{ theme.nameIdentifier }}: {% endif %} {{ nameOfUserwithFormat(app.user, laf_showNameFrontend) }}</p>
+                                        <p class="mb-0">
+                                            <small>{% if theme != false %}{{ theme.usernameIdentifier }}: {% endif %}{{ app.user.userIdentifier }}</small>
+                                        </p>
+                                        {% if getApplicationProperties('allowTimeZoneSwitch') == 1 %}
+                                            <p><small>
+                                                    {% if  theme != false %}{{ theme.timeZoneIdentifier }}{% endif %}
+                                                    : {{ app.user.timeZone }}
+                                                </small></p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        {% if theme == false  or (theme is not null and theme.profileAllowEdit == true  ) %}
+                            <p class="mb-0"><a
+                                        href="{{ path('connect_keycloak_edit') }}"
+                                        target="_blank">{% trans %}Profil bearbeiten{% endtrans %}</a></p>
+                        {% endif %}
+                        {% if theme == false  or (theme is not null and theme.profileAllowPasswortreset == true  ) %}
+                            <p><a
+                                        href="{{ path('connect_keycloak_password') }}"
+                                        target="_blank">{% trans %}Passwort ändern{% endtrans %}</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input switchDarkmode" type="checkbox" role="switch" id="switchDarkmode2"
+                            {{ app.request.cookies.get('DARK_MODE') }}
+                            {% if app.request.cookies.get('DARK_MODE') is defined and app.request.cookies.get('DARK_MODE') == 1 %}
+                    checked
+                            {% endif %}/>
+                    <label class="form-check-label" for="switchDarkmode2">
+                        {{ 'Darkmode'|trans }}</i>
+                    </label>
+                </div>
+
+                <a href="#" class="caretdown after"
+                   data-mdb-toggle="collapse"
+                   data-mdb-target="#mydeputies"
+                   aria-expanded="false"
+                   aria-controls="mydeputies">
+                    {{ 'deputy.mydebutys'|trans }}
+                </a>
+                <div class="collapse" id="mydeputies">
+                    <ul class="list-group">
+                        {% for d in app.user.deputy %}
+                        <li class="list-inline-item">{{ d|nameOfUserNoSymbol }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-lg-12">
+                        <div class="mb-3">
+                            <b>{{ 'input.help.timeaway'|trans }}</b>
+                        </div>
+                        <div class="input-group  mb-3">
+                            <input type="number" id="awayTimeField" class="form-control"/>
+                            <span class="input-group-text">{{ 'Minuten'|trans }}</span>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                {% if secondEmailForm is defined %}
+                    {{ form_start(secondEmailForm) }}
+                    <div class="row">
+                        {% if secondEmailForm.secondEmail is defined %}
+                            <div class="col-12 mb-3">
+                                {{ form_row(secondEmailForm.secondEmail) }}
+                            </div>
+                        {% endif %}
+                        {% if secondEmailForm.timeZone is defined %}
+                            <div class="col-12 mb-3">
+                                {{ form_row(secondEmailForm.timeZone) }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-end">
+                            {{ form_widget(secondEmailForm.submit) }}
+                        </div>
+                    </div>
+                    {{ form_rest(secondEmailForm) }}
+                    {{ form_end(secondEmailForm) }}
+                    <hr>
+                {% else %}
+                    <a class="btn btn-primary  loadContent"
+                       href="{{ path('second_email_change') }}"
+                       target="_blank">{{ 'second.email.title'|trans }}</a>
+                {% endif %}
+                {% if getApplicationProperties('profileHideiCalLink') != true %}
+                    <div class="row">
+                        <div class="col-lg-12 mt-3">
+                            <div class="mb-3">
+                                <b>{{ 'iCal Link'|trans }}</b>
+                                <a href="https://h2-invent.com/post/howtos/ical-link-kalender-importieren">
+                                    {{ 'help.ical.Link'|trans }}
+                                </a>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input id="linkical" readonly type="text" class="form-control"
+                                       value="{{ httpsAbolutUrl(path('ical',{ 'id':app.user.uid })) }}">
+                                <button class="btn btn-md btn-outline-primary  waves-effect copyLink"
+                                        type="button" data-clipboard-target="#linkical"><i
+                                            class="fa-regular fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+
+            <div class="modal-footer">
+                {% if theme == false  or (theme is not null and theme.profileAllowLogout == true  ) %}
+                    <a href="{{ path('logout_keycloak') }}"
+                       class="btn btn-block btn-danger btn-sm">{{ 'Logout'|trans }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

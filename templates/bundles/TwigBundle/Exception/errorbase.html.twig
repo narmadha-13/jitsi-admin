@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+{% set theme =  getThemeProperties() %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{ exception.statusCode }} - Jitsi-Admin</title>
+    {{ encore_entry_link_tags('app') }}
+    <style>
+        body{
+            height: 100vh;
+            width: 100%;
+            background-color: #F0F1F1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+{% set theme =  getThemeProperties() %}
+{% set header = 'Seite nicht gefunden'|trans %}
+    {% if theme and getApplicationProperties('404_ERROR_MESSAGE') %}
+        {%  set content= getApplicationProperties('404_ERROR_MESSAGE')  %}
+    {% else %}
+        {%  set content= 'Huch? Wo wolltest du denn hin. Die Seite hat der Meetling leider nicht gefunden.'|trans %}
+    {% endif %}
+{% set image = asset('images/error/error_undefined.svg') %}
+{% include('bundles/TwigBundle/Exception/error_content.html.twig') %}

@@ -1,0 +1,277 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% if theme %}
+        <link rel="shortcut icon" type="image/x-icon" href="{{ theme.icon }}">
+    {% else %}
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.png') }}">
+    {% endif %}
+
+    <link rel="manifest" href="{{ path('app_manifest') }}">
+    {% block title %}
+        {% if theme and theme.title is defined %}
+            <title>{{ theme.title }}</title>
+        {% else %}
+            <title>Jitsi Konferenz Manager</title>
+        {% endif %}
+    {% endblock %}
+
+
+
+    {{ include('base/__matomo.html.twig') }}
+
+    <!-- Our Custom CSS -->
+    {% if css is defined and css is not null %}
+        {{ encore_entry_link_tags(css) }}
+    {% else %}
+        {% if app.request.cookies.get('DARK_MODE') is defined and app.request.cookies.get('DARK_MODE') == 1 %}
+            {{ encore_entry_link_tags('black') }}
+        {% else %}
+            {{ encore_entry_link_tags('app') }}
+        {% endif %}
+    {% endif %}
+
+
+
+    {% block stylesheets %}{% endblock %}
+
+
+    {% if theme %}
+        <style>
+            :root{
+                --main-color: {{theme.primaryColor}};
+                --color-button: {{ theme.colorButton }};
+                --color-button-text: {{ theme.colorButtonText }};
+                --color-button-bright: {{ theme.colorButton|color_lighten(97)}};
+                --color-button-hover:{{ theme.colorButton|color_lighten(10)}};
+
+                --color-button-outline:{{ theme.colorButtonOutlinecolor|color_lighten(10)}};
+                --color-button-outline-hover:{{ theme.colorButton|color_lighten(10)}};
+                --color-button-outline-text:{{ theme.colorButtonOutlineTextcolor|color_lighten(10)}};
+                --color-button-outline-text-hover:{{ theme.colorButton|color_lighten(10)}};
+
+                --color-button-secondary:{{ theme.colorButtonSecondary}};
+                --color-button-secondary-hover:{{ theme.colorButtonSecondary|color_lighten(10)}};
+            }
+            .sidebarToggle {
+                background-color: {{ theme.colorButton }}!important;
+                color: var(--color-button-text) !important;
+            }
+
+            .nav-mat-tabs .nav-mat-item.mat-active, .nav-mat-tabs .nav-mat-item:hover {
+                color: var(--color-Button)!important;
+            }
+
+            .nav-mat-tabs .underline {
+                border-bottom: solid 3px {{ theme.colorButton }}!important;
+            }
+
+            .nav-mat-tabs .nav-mat-item:hover {
+                background: rgba(0, 0, 0, 0.05);
+            }
+
+            .btn-outline-dashboard {
+                border-color: {{ theme.colorButtonOutlinecolor }} !important;
+            }
+
+            .light-blue.darken-3 {
+                background-color: {{ theme.colorModalHeader }} !important;
+            }
+
+            h5.modal-title, button.close {
+                color: {{ theme.colorModalHeaderTextColor }} !important;
+            }
+
+            .btn-outline-primary, .btn-outline-primary:hover {
+                color: var(--color-button-outline-hover) !important;
+                border-color: var(--color-button-outline-hover) !important;
+            }
+
+            .blackMode .btn-outline-primary, .blackMode {
+                color: {{ theme.colorButtonOutlineTextcolorDarkMode }} !important;
+                border-color: {{ theme.colorButtonOutlinecolorDarkMode }} !important;
+            }
+
+            .blackMode a:not(.btn, .btn-floating) {
+                color: {{ theme.primaryColor }};
+            }
+
+            .btn-outline-secondary, .btn-outline-default {
+                border-color: {{ theme.colorButtonOutlinecolor }} !important;
+                color: {{ theme.colorButtonOutlineTextcolor }} !important;
+            }
+
+            .btn-secondary {
+                background: {{ theme.colorButtonSecondary }} !important;
+                color: {{ theme.colorButtonSecondaryText }} !important;
+            }
+
+            .btn-secondary:hover {
+                background: {{ theme.colorButtonSecondary }} !important;
+                color: {{ theme.colorButtonSecondaryText }} !important;
+            }
+
+            .blackMode .btn-outline-secondary, .blackMode .btn-outline-default {
+                border-color: {{ theme.colorButtonOutlinecolorDarkMode }} !important;
+                color: {{ theme.colorButtonOutlineTextcolorDarkMode }} !important;
+            }
+
+            .btn-outline-secondary .active, .btn-outline-default .active,
+            .btn-outline-secondary:hover, .btn-outline-default:hover,
+            .btn-outline-secondary:active, .btn-outline-default:active,
+            .btn-outline-secondary:focus, .btn-outline-default:focus,
+            .show > .btn-outline-primary.dropdown-toggle {
+                border-color: {{ theme.colorButtonOutlinecolor }} !important;
+                color: {{ theme.colorButtonOutlineTextcolor }} !important;
+            }
+
+            .blackMode .btn-outline-secondary .active, .blackMode .btn-outline-default .active,
+            .blackMode .btn-outline-secondary:hover, .blackMode .btn-outline-default:hover,
+            .blackMode .btn-outline-secondary:active, .blackMode .btn-outline-default:active,
+            .blackMode .btn-outline-secondary:focus, .blackMode .btn-outline-default:focus,
+            .blackMode .show > .btn-outline-primary.dropdown-toggle {
+                border-color: {{ theme.colorButtonOutlinecolorDarkMode }} !important;
+                color: {{ theme.colorButtonOutlineTextcolorDarkMode }} !important;
+            }
+
+            .btn-primary {
+                background-color: var(--color-button) !important;
+                color: var(--color-button-text) !important;
+                box-shadow: 0 4px 9px -4px var(--color-button);
+            }
+
+            .btn-primary.dropdown-toggle {
+                background-color: var(--color-button) !important;
+                color: var(--color-button-text) !important;
+            }
+
+            .btn-primary:hover, .btn-primary.dropdown-toggle:hover {
+                background-color: var(--color-button-hover) !important;
+                color: var(--color-button-text) !important;
+            }
+
+            .btn-primary.dropdown-toggle:active, .show > .btn-primary.dropdown-toggle, .show > .btn-primary.dropdown-toggle:active {
+                background-color: {{ theme.colorButtonActive }} !important;
+                color: var(--color-button-text) !important;
+            }
+
+            .blackMode #content, .blackMode .sidebar.showSidebar {
+                background-color: {{ theme.darkmodeBackgroudcolor }} !important;
+            }
+
+            .blackMode .card, .blackMode .adressbookline {
+                background-color: {{ theme.darkmodeBackgroudcolorContrast }} !important;
+            }
+
+            .dudp__calendar-header, .mdtp__wrapper[data-theme='blue'] .mdtp__time_holder {
+                background-color: {{ theme.colorModalHeader }} !important;
+            }
+
+            .dudp__calendar .selected:before {
+                background-color: var(--color-button) !important;
+            }
+
+            .mdtp__wrapper[data-theme='blue'] .mdtp__clock .mdtp__digit.active span,
+            .mdtp__wrapper[data-theme='blue'] .mdtp__clock .mdtp__digit:not(.digit--disabled) span:hover,
+            .mdtp__wrapper[data-theme='blue'] .mdtp__clock .mdtp__digit.active:before,
+            .mdtp__clock_dot {
+                background-color: var(--color-button) !important;
+            }
+
+            .mdtp__button {
+                color: var(--color-button) !important;
+            }
+
+
+            .successBorder {
+                border: {{ theme.colorBadgeRunningNow }} 4px solid;
+            }
+
+            .form-check-input[type=checkbox]:checked, .form-check-input[type=checkbox]:checked:focus {
+                background-image: none;
+                background-color: var(--color-button);
+            }
+
+            .form-check-input:checked, .form-check-input:checked:focus {
+                border-color: var(--color-button);
+            }
+
+            .form-control:focus {
+                border-color: var(--color-button);
+                box-shadow: inset 0 0 0 1px var(--color-button);
+            }
+
+            .form-switch .form-check-input:checked[type=checkbox]:after {
+
+                background-color: var(--color-button);
+
+            }
+
+            .form-outline .form-control:focus ~ .form-label {
+                color: var(--color-button);
+            }
+            .input-group > .btn[class*=btn-outline-]{
+                border-color: var(--color-button) !important;
+            }
+            .form-outline .form-control:focus ~ .form-notch .form-notch-leading {
+                border-color: var(--color-button);
+                box-shadow: -1px 0 0 0 var(--color-button), 0 1px 0 0 var(--color-button), 0 -1px 0 0 var(--color-button);
+            }
+
+            .form-outline .form-control:focus ~ .form-notch .form-notch-middle {
+                border-color: var(--color-button);
+                box-shadow: 0 1px 0 0 var(--color-button);
+                border-top: 1px solid transparent;
+            }
+
+            .form-outline .form-control:focus ~ .form-notch .form-notch-trailing {
+                border-color: var(--color-button);
+                box-shadow: 1px 0 0 0 var(--color-button), 0 -1px 0 0 var(--color-button), 0 1px 0 0 var(--color-button);
+            }
+
+            .form-check-input[type=radio]:checked:after {
+                border-color: var(--color-button);
+                background-color: var(--color-button);
+            }
+
+            {% if getApplicationProperties('FAVORITEBACKGROUND') %}
+            .card.favorites::after {
+                background-image: url("{{ getApplicationProperties('FAVORITEBACKGROUND') }}");
+            }
+
+            .form-control, .form-check-input, .input-group-text {
+                border-color: var(--color-button);
+                border-radius: 8px;
+                border-width: 3px;
+            }
+
+            .form-check-input {
+                border-radius: 4px;
+            }
+
+            input {
+                border-color: inherit;
+            }
+            .proTips {
+                border-color: var(--color-button)!important;
+            }
+            .blackMode .proTips{
+                background-color: {{ theme.darkmodeBackgroudcolor }}!important;
+            }
+            .window .sidebar #favorite-Container h5, .window .sidebar #favorite-Container .h5 {
+                border-color: {{ theme.colorButton  }};
+            }
+
+            .card,.adressbookline, .card.favorites .card-background{
+                background-color: var(--color-button-bright);
+            }
+
+
+            {% endif %}
+        </style>
+
+    {% endif %}
+
+
+</head>

@@ -1,0 +1,10 @@
+{% set theme =  getThemeProperties() %}
+{% set image = asset('images/error/error_undefined.svg') %}
+{% set header = 'Allgemeiner Fehler'|trans %}
+    {% if theme and getApplicationProperties('UNKNOWN_ERROR_MESSAGE') %}
+        {%  set content= getApplicationProperties('UNKNOWN_ERROR_MESSAGE') %}
+    {% else %}
+         {%  set content= 'Hier ist was schief gelaufen. Tut uns Leid'|trans %}
+    {% endif %}
+
+{% include('bundles/TwigBundle/Exception/error_content.html.twig') %}

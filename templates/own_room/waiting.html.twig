@@ -1,0 +1,33 @@
+{% extends 'join/base.html.twig' %}
+{% block header %}
+    {{ room.name }}
+{% endblock %}
+{% block content %}
+
+
+        <b>{{ 'Bitte warten. Die Konferenz ist noch nicht geöffnet'|trans }}</b>
+        <div class="text-center">
+
+        </div>
+        <h3 class="text-center" id="countdown"></h3>
+
+
+
+{% endblock %}
+{% block script %}
+
+    <script>
+        var checkUrl = '{{ path('room_waiting_check',{'name':name,'uid':room.uid,'type':type}) }}'
+        var uid = '{{ room.uid }}';
+        var name = '{{ name }}';
+        {% if not room.persistantRoom %}
+        var startDate = '{{ room.start|date() }}';
+        {% endif %}
+        
+    </script>
+
+{% endblock %}
+{% block webpack %}
+
+    {{ encore_entry_script_tags('join') }}
+{% endblock %}

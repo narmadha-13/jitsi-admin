@@ -1,0 +1,49 @@
+security:
+    password_hashers:
+        App\Entity\User:
+            algorithm: auto
+
+
+
+
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_ADMIN:       [ROLE_ALLOWED_TO_SWITCH]
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        users:
+            entity:
+                class: App\Entity\User
+                property: keycloakId
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern: ^/
+            switch_user: true
+            logout:
+                path:   app_logout
+                target: index
+            custom_authenticators:
+                - App\Security\KeycloakAuthenticator
+
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: /backend/, role: ROLE_ADMIN }
+        - { path: /login$, role: PUBLIC_ACCESS  }
+        - { path: /signal, role: PUBLIC_ACCESS  }
+        - { path: /jitsi/, role: PUBLIC_ACCESS  }
+        - { path: /api/, role: PUBLIC_ACCESS  }
+        - { path: /cron/, role: PUBLIC_ACCESS  }
+        - { path: /health/, role: PUBLIC_ACCESS  }
+        - { path: /register, role: PUBLIC_ACCESS  }
+        - { path: /room/lobby/, role: PUBLIC_ACCESS  }
+        - { path: /room/, role: ROLE_USER }
+        - { path: /join, role: PUBLIC_ACCESS }
+        - { path: /server/, role: ROLE_USER }

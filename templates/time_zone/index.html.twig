@@ -1,0 +1,39 @@
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+        <div class="modal-header  light-blue darken-3 white-text">
+            <h5 class="modal-title">{{ title }}</h5>
+             <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            {{ form_start(form) }}
+            <div class="row">
+                {% if form.secondEmail is defined %}
+                <div class="col-12 mb-3">
+                    {{ form_widget(form.secondEmail) }}
+                </div>
+                {% endif %}
+                {% if form.timeZone is defined %}
+                <div class="col-12 mb-3">
+                    {{ form_widget(form.timeZone) }}
+                </div>
+                {% endif %}
+                <div class="col-12 mb-3">
+                    {{ form_widget(form.profilePicture) }}
+                </div>
+                <div class="col-12 mb-3">
+
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-end">
+                    {{ form_widget(form.submit) }}
+                </div>
+            </div>
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+            {% if message is defined %}<p>{{ message }}</p>{% endif %}
+        </div>
+    </div>
+</div>

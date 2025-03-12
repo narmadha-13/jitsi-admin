@@ -1,0 +1,12 @@
+{% extends 'start/index.html.twig' %}
+{% block sidebar %}
+    {% embed('conference_modules/conferenceSidebar.html.twig') with {'room': room} %}
+        {% block extension %}
+            {% include 'conference_modules/inviteUsersToOpenRooms.html.twig' with {'url':path('app_public_conference',{'confId':room.name})} %}
+
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+
+

@@ -1,0 +1,587 @@
+
+@mixin hovertransitionDown{
+  transition: transform 0.2s;
+  -webkit-transition-delay: 1.2s;
+  -moz-transition-delay: 1.2s;
+  -ms-transition-delay: 1.2s;
+  -o-transition-delay: 1.2s;
+  transition-delay: 1.2s;
+}
+@mixin hovertransitionUp{
+  transition: transform 0.2s;
+  -webkit-transition-delay: 0.1s;
+  -moz-transition-delay: 0.1s;
+  -ms-transition-delay: 0.1s;
+  -o-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+@mixin hoverDragger {
+  transition: transform 0.2s;
+  @include hovertransitionDown;
+  &:hover {
+    transform: translateY(0) !important;
+    @include hovertransitionUp;
+
+    .dragger {
+      cursor: pointer;
+      &:before {
+        transform: rotateX(180deg);
+        @include hovertransitionUp;
+        //font-family: "Font Awesome 5 Free";
+        //font-weight: 900;
+        //content: "\f106\00a0" !important;
+      }
+
+      &:after {
+        transform: rotateX(180deg);
+        @include hovertransitionUp;
+        //font-family: "Font Awesome 5 Free";
+        //font-weight: 900;
+        //content: "\00a0\f106" !important;
+      }
+    }
+  }
+}
+
+
+body {
+  overscroll-behavior-y: contain;
+  background-color: white;
+  min-height: 100vh;
+
+  &.blackMode {
+    background-color: black;
+  }
+}
+
+#lobbyWebcam {
+  width: 100%;
+  height: auto;
+}
+
+.webcamArea {
+  position: relative;
+  background-image: url("../../image/defaultUser.webp");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.webcamToolbar {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding: 3px;
+  padding-left: 8px;
+  opacity: 1;
+  transition: opacity 0.5s;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.webcamArea:hover > .webcamToolbar {
+  opacity: 1;
+}
+
+.webcamToolbar > i {
+  cursor: pointer;
+}
+
+.initialCircle {
+  background-color: black;
+  display: flex!important;
+  font-weight: bold;
+  justify-content: center;
+  width: 75px;
+  min-width: 75px;
+  max-width: 75px;
+  border-radius: 50%;
+  height: 75px;
+  align-items: center;
+  font-size: 40px;
+  color: white;
+}
+
+
+.webcamArea > .overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: rgb(0, 0, 0, 0.4);
+  opacity: 1;
+  transition: opacity 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  padding: 18px;
+}
+
+.webcamArea:hover > .overlay {
+  opacity: 0;
+}
+
+.webcamArea > .overlay > .lds-roller div:after {
+  background: white;
+}
+
+#jitsiWindow {
+  height: inherit;
+  overflow: hidden;
+  position: relative;
+}
+
+#jitsiWrapper.inMeeting {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#col-waitinglist {
+  &.large {
+    padding-top: 18px;
+    background-color: white;
+    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  }
+}
+
+.lobbyWindow {
+  display: flex;
+  justify-content: center;
+
+  .dragger {
+    padding-right: 50px;
+    padding-left: 50px;
+    background-color: #ffffff;
+    border-radius: 0 0 20px 20px;
+    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    transition: background-color 1s;
+
+    &:before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f107\00a0";
+      display: inline-block;
+      @include hovertransitionDown;
+    }
+
+    &:after {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\00a0\f107";
+      display: inline-block;
+      @include hovertransitionDown;
+    }
+
+    @keyframes blinkGreen {
+      0% {
+        background-color: white;
+        color: black
+      }
+      50% {
+        background-color: #00c851;
+        color: white
+      }
+      100% {
+        background-color: white;
+        color: black
+      }
+    }
+
+    &.active {
+      background-color: #00c851;
+      color: white;
+      animation-name: blinkGreen;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+    }
+  }
+
+
+}
+
+
+#sliderTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 15;
+
+    @media (min-width: 992px) {
+      @include hoverDragger();
+      &.openSlider {
+        transform: translateY(0) !important;
+      }
+  }
+
+}
+
+.in-iframe {
+  &:not(.in-smartPhone) {
+    #sliderTop {
+      @include hoverDragger();
+
+      &.openSlider {
+        transform: translateY(0) !important;
+      }
+    }
+  }
+}
+
+.selectedDevice {
+  font-weight: bold;
+
+  &:before {
+    padding-right: 8px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f0da" !important;
+  }
+}
+
+#col-waitinglist {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+}
+
+#waitingUserWrapper {
+  flex-grow: 1;
+
+  &:has(.waitingUserCard:nth-child(n+5)) {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 60vh;
+  }
+
+}
+
+.lobbyButtons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: stretch;
+
+}
+
+@media (min-width: 768px) {
+  .lobbyButtons {
+    flex-direction: row;
+  }
+}
+
+.lobbyCard {
+  .lobbyButtons {
+    flex-direction: column;
+
+  }
+}
+
+
+.lobbyCard {
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.dragger {
+  width: fit-content;
+}
+
+.touchactionNone {
+  touch-action: none;
+}
+
+.btn-group {
+  margin-left: 0;
+  margin-right: 0;
+
+  .caretdown {
+    max-width: max-content;
+  }
+}
+
+.icon-holder {
+  position: absolute;
+
+  .feedbackSwipe {
+    opacity: 0;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    position: absolute;
+    height: inherit;
+    color: white;
+    font-weight: bold;
+    font-size: 2.5em;
+  }
+
+  .acceptSwipe {
+    background-color: $success;
+    padding-left: 18px;
+    border-radius: 8px;
+  }
+
+  .denieSwipe {
+    padding-right: 18px;
+    background-color: $danger;
+    justify-content: end;
+    border-radius: 8px;
+  }
+}
+
+@keyframes showSwipe {
+  0% {
+    transform: translate(0px, 0);
+  }
+  33% {
+    transform: translate(20px, 0);
+  }
+  66% {
+    transform: translate(-20px, 0);
+  }
+  100% {
+    transform: translate(0px, 0);
+  }
+}
+
+.in-smartPhone {
+  @media (max-width: 768px) {
+    #waitingUser {
+      .waitingUserCard {
+        &:nth-child(1) {
+          .card {
+            animation-name: showSwipe;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+            animation-delay: 1s;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.accessAllowed {
+  position: absolute;
+  background-color: rgb(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+
+  p {
+    margin: 0;
+  }
+
+  #lobby_participant_counter {
+    font-size: 50px;
+    color: white;
+    line-height: 1;
+  }
+}
+
+.textAllow {
+  color: white;
+}
+
+#stopEntry {
+  color: white !important;
+  border-color: white !important;
+}
+
+.lobbyPartList {
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.lobbyPart {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: none;
+  padding-right: 0;
+  padding-left: 0;
+
+}
+
+.in-iframe {
+  &:not(.in-smartPhone) {
+    .buttonHolder {
+
+      .btn {
+        display: flex !important;
+      }
+
+      .slider {
+        display: none !important;
+      }
+    }
+
+    .slide-text {
+      display: none !important;
+    }
+  }
+}
+
+.buttonHolder {
+  .btn {
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+}
+
+.searchCallOutParticipantsDropdown {
+  @include statusDot();
+}
+
+
+
+.ringingsymbol {
+  position: relative;
+
+  .fa-phone, .fa-bell {
+
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  }
+
+  .fa-phone-slash {
+
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  }
+}
+
+.calloutsymbol {
+  margin-bottom: 4px;
+
+  .content {
+    left: 0;
+    transform: translateX(-50%) scale(0%);
+    width: max-content;
+    transition: transform 0.5s;
+    background-color: $background-color;
+  }
+
+  &:hover > .content, &:active > .content {
+    transform: translateX(-105%) scale(100%);
+    border-radius: 4px;
+    transition: transform 0.5s;
+  }
+
+  .ringingsymbol {
+    border-radius: 4px;
+    background-color: $background-color;
+  }
+}
+
+@keyframes growheight {
+  0% {
+    transform: translateX(-150%);
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  50% {
+    height: auto;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+  60% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.messageContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  padding: inherit;
+
+  .messageWrapper {
+    animation-name: growheight;
+    animation-duration: 1s;
+
+    &:before {
+      font-family: "Font Awesome 5 Free";
+      margin-right: 0.5em;
+      font-weight: 900;
+      float: left;
+      content: "\f1d8";
+    }
+
+    background-color: $info;
+    padding: 1em;
+    border-bottom: 1px black solid;
+    color: white;
+    cursor: pointer;
+    display: flex;
+
+    &:last-child {
+      border-radius: 0 0 0.5rem 0.5rem;
+    }
+
+    &:first-child {
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+
+      .from {
+        font-size: x-small;
+      }
+    }
+  }
+}
+
+.part-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1 1 auto;
+  margin: 0;
+}
+
+.onlineDotJoin {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 5000px;
+  position: relative;
+  margin-left: 4px;
+
+  &:before {
+    font-size: 1em !important;
+  }
+
+  flex: 0 0 auto;
+}
+
+.dropdown-menu{
+  a{
+    cursor: pointer;
+  }
+}
+
+
+
+
